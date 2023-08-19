@@ -1,0 +1,313 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+
+<body class="bg-image" style="
+  background-image: url('/annie-spratt-wuc-KEIBrdE-unsplash.jpg');
+  height: 100vh;
+  background-size: cover;
+">
+
+    <div class="d-flex">
+        <div class=" min-vh-100 col-2 bg-dark" style="z-index: 2;">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-0 pt-2 text-white min-vh-100">
+                <p class="w-100 text-center h1">
+                    Menu
+                </p>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start "
+                    id="menu">
+                    <li class="nav-item w-100 my-3">
+                        <a href="/order/" class="nav-link align-middle px-5 text-light w-100">
+                            <i class="fa-solid fa-file-pen" style="color: #ffffff;"></i><span
+                                class="ms-1 d-none d-sm-inline">Facility</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class=" col-10 d-flex flex-column">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+                <div class="container-fluid">
+                    <div class="col-4">
+                        <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="col-8 col-md-4 d-flex justify-content-center">
+                        <img class="navbar-brand " style="width: auto; height: 100px;"
+                            src="https://furamavietnam.com/wp-content/uploads/2018/10/logo.png"></img>
+                    </div>
+                    <div class="collapse navbar-collapse col-4" id="navbarNavAltMarkup">
+                        <div class="navbar-nav col-12">
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="min-vh-100 mx-5">
+                <div class="container">
+                    <h1 class="text-center m-5">Create Facility</h1>
+
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                aria-selected="true">Villa</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                                aria-selected="false">House</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                                aria-selected="false">Room</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                            aria-labelledby="pills-home-tab">
+
+                            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="name" type="text" placeholder="Name"
+                                        data-sb-validations="" />
+                                    <label for="name">Name</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="useArea" type="text" placeholder="Use Area"
+                                        data-sb-validations="" />
+                                    <label for="useArea">Use Area</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="fee" type="text" placeholder="Fee"
+                                        data-sb-validations="" />
+                                    <label for="fee">Fee</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="maxOfPersons" type="text"
+                                        placeholder="Max Of Persons" data-sb-validations="" />
+                                    <label for="maxOfPersons">Max Of Persons</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="kindOfRent" aria-label="Kind Of Rent">
+                                        <option value="Year">Year</option>
+                                        <option value="Month">Month</option>
+                                        <option value="Day">Day</option>
+                                        <option value="Hour">Hour</option>
+                                    </select>
+                                    <label for="kindOfRent">Kind Of Rent</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="timeOfRent" type="text" placeholder="Time Of Rent"
+                                        data-sb-validations="" />
+                                    <label for="timeOfRent">Time Of Rent</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="standard" type="text" placeholder="Standard"
+                                        data-sb-validations="" />
+                                    <label for="standard">Standard</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="more" type="text" placeholder="Accompanied Service"
+                                        data-sb-validations="" />
+                                    <label for="more">Accompanied Service</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="poolOfArea" type="text" placeholder="Pool Of Area"
+                                        data-sb-validations="" />
+                                    <label for="poolOfArea">Pool Of Area</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="numberOfFloor" type="text"
+                                        placeholder="Number Of Floor" data-sb-validations="" />
+                                    <label for="numberOfFloor">Number Of Floor</label>
+                                </div>
+                                <div class="d-none" id="submitSuccessMessage">
+                                    <div class="text-center mb-3">
+                                        <div class="fw-bolder">Form submission successful!</div>
+                                        <p>To activate this form, sign up at</p>
+                                        <a
+                                            href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                    </div>
+                                </div>
+                                <div class="d-none" id="submitErrorMessage">
+                                    <div class="text-center text-danger mb-3">Error sending message!</div>
+                                </div>
+                                <div class="d-grid">
+                                    <button class="btn btn-primary btn-lg disabled" id="submitButton"
+                                        type="submit">Create</button>
+                                </div>
+                            </form>
+                            <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+
+
+                        </div>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                            aria-labelledby="pills-profile-tab">
+
+
+                            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="name" type="text" placeholder="Name"
+                                        data-sb-validations="" />
+                                    <label for="name">Name</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="useArea" type="text" placeholder="Use Area"
+                                        data-sb-validations="" />
+                                    <label for="useArea">Use Area</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="fee" type="text" placeholder="Fee"
+                                        data-sb-validations="" />
+                                    <label for="fee">Fee</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="maxOfPersons" type="text"
+                                        placeholder="Max Of Persons" data-sb-validations="" />
+                                    <label for="maxOfPersons">Max Of Persons</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="kindOfRent" aria-label="Kind Of Rent">
+                                        <option value="Year">Year</option>
+                                        <option value="Month">Month</option>
+                                        <option value="Day">Day</option>
+                                        <option value="Hour">Hour</option>
+                                    </select>
+                                    <label for="kindOfRent">Kind Of Rent</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="timeOfRent" type="text" placeholder="Time Of Rent"
+                                        data-sb-validations="" />
+                                    <label for="timeOfRent">Time Of Rent</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="standard" type="text" placeholder="Standard"
+                                        data-sb-validations="" />
+                                    <label for="standard">Standard</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="more" type="text" placeholder="Accompanied Service"
+                                        data-sb-validations="" />
+                                    <label for="more">Accompanied Service</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="numberOfFloor" type="text"
+                                        placeholder="Number Of Floor" data-sb-validations="" />
+                                    <label for="numberOfFloor">Number Of Floor</label>
+                                </div>
+                                <div class="d-none" id="submitSuccessMessage">
+                                    <div class="text-center mb-3">
+                                        <div class="fw-bolder">Form submission successful!</div>
+                                        <p>To activate this form, sign up at</p>
+                                        <a
+                                            href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                    </div>
+                                </div>
+                                <div class="d-none" id="submitErrorMessage">
+                                    <div class="text-center text-danger mb-3">Error sending message!</div>
+                                </div>
+                                <div class="d-grid">
+                                    <button class="btn btn-primary btn-lg disabled" id="submitButton"
+                                        type="submit">Create</button>
+                                </div>
+                            </form>
+
+
+
+
+                        </div>
+                        <div class="tab-pane fade" id="pills-contact" role="tabpanel"
+                            aria-labelledby="pills-contact-tab">
+
+                            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="name" type="text" placeholder="Name"
+                                        data-sb-validations="" />
+                                    <label for="name">Name</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="useArea" type="text" placeholder="Use Area"
+                                        data-sb-validations="" />
+                                    <label for="useArea">Use Area</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="fee" type="text" placeholder="Fee"
+                                        data-sb-validations="" />
+                                    <label for="fee">Fee</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="maxOfPersons" type="text"
+                                        placeholder="Max Of Persons" data-sb-validations="" />
+                                    <label for="maxOfPersons">Max Of Persons</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="kindOfRent" aria-label="Kind Of Rent">
+                                        <option value="Year">Year</option>
+                                        <option value="Month">Month</option>
+                                        <option value="Day">Day</option>
+                                        <option value="Hour">Hour</option>
+                                    </select>
+                                    <label for="kindOfRent">Kind Of Rent</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="timeOfRent" type="text" placeholder="Time Of Rent"
+                                        data-sb-validations="" />
+                                    <label for="timeOfRent">Time Of Rent</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="accompaniedService" type="text"
+                                        placeholder="Accompanied Service" data-sb-validations="" />
+                                    <label for="accompaniedService">Accompanied Service</label>
+                                </div>
+                                <div class="d-none" id="submitSuccessMessage">
+                                    <div class="text-center mb-3">
+                                        <div class="fw-bolder">Form submission successful!</div>
+                                        <p>To activate this form, sign up at</p>
+                                        <a
+                                            href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                    </div>
+                                </div>
+                                <div class="d-none" id="submitErrorMessage">
+                                    <div class="text-center text-danger mb-3">Error sending message!</div>
+                                </div>
+                                <div class="d-grid">
+                                    <button class="btn btn-primary btn-lg disabled" id="submitButton"
+                                        type="submit">Create</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container bg-transparent text-light" style="z-index: 2;">
+                <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                    <div class="col-md-4 d-flex align-items-center">
+                        <a href="/" class="mb-3 me-2 mb-md-0  text-decoration-none lh-1">
+                            <svg class="bi" width="30" height="24">
+                                <use xlink:href="#bootstrap" />
+                            </svg>
+                        </a>
+                        <span class="mb-3 mb-md-0">&copy; 2022 Company, Inc</span>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
