@@ -1,8 +1,12 @@
 import './App.css';
-import TodoApp from './ss3_components_state_life cycle/excercise/excercise2/TodoApp';
+import Counter1 from './ss4_hook/excercise/Counter1';
+import Counter2 from './ss4_hook/excercise/Counter2';
 function App() {
   return (
-    <TodoApp />
+    <>
+      <Counter1 />
+      <Counter2 />
+    </>
   );
 }
 
