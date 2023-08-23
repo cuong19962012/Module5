@@ -1,11 +1,10 @@
-import './App.css';
-import Counter1 from './ss4_hook/excercise/Counter1';
-import Counter2 from './ss4_hook/excercise/Counter2';
+import { Contact } from "./ss5_form_and_router/excercise/excercise1/Contact";
+import { HealthDeclaration } from "./ss5_form_and_router/excercise/excercise2/HealthDeclaration";
+
 function App() {
   return (
     <>
-      <Counter1 />
-      <Counter2 />
+      <HealthDeclaration />
     </>
   );
 }

@@ -1,13 +1,11 @@
-import { useState } from "react";
+
+import { useHook } from "./useHook";
 function Counter1() {
-    let [count, setCount] = useState(0);
-    let increament = () => {
-        setCount(count + 1);
-    };
+    let [count, increase] = useHook(1);
     return (
         <div>
             Count:{count}<br />
-            <button onClick={increament}>Add 1</button>
+            <button onClick={increase}>Add 1</button>
             <br />
         </div>
     );
