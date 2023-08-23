@@ -7,6 +7,9 @@ import SideBar from "./components/layout/SideBar";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import { FacilityEdit } from "./components/facility/FacilityEdit";
+import { CustomerShow } from "./components/customer/CustomerShow";
+import { CustomerCreate } from "./components/customer/CustomerCreate";
+import { CustomerEdit } from "./components/customer/CustomerEdit";
 function App() {
   return (
     <>
@@ -26,6 +29,11 @@ function App() {
                       <Route path="room" element={<FacilityCreateRoom />} />
                     </Route>
                     <Route path="edit" element={<FacilityEdit />} />
+                  </Route>
+                  <Route path="customer/">
+                    <Route path="" element={<CustomerShow />} />
+                    <Route path="create" element={<CustomerCreate />} />
+                    <Route path="edit" element={<CustomerEdit />} />
                   </Route>
                 </Route>
               </Routes>
