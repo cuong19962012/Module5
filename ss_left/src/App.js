@@ -1,12 +1,20 @@
-import { Contact } from "./ss5_form_and_router/excercise/excercise1/Contact";
-import { HealthDeclaration } from "./ss5_form_and_router/excercise/excercise2/HealthDeclaration";
-
-function App() {
+import { BookCreate } from "./ss6-api/excercise/excercise2/BookCreate";
+import { BookList } from "./ss6-api/excercise/excercise2/BookList";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+export function App() {
   return (
     <>
-      <HealthDeclaration />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" >
+            <Route index element={<BookList />}></Route>
+            <Route path="/create" element={<BookCreate />}></Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
+
 
 export default App;
