@@ -1,11 +1,11 @@
 
-import { useHook } from "./useHook";
+import { useIncreasement } from "./useIncreasement";
 function Counter2() {
-    let [count, increase] = useHook(2);
+    let [count, increase] = useIncreasement(0);
     return (
         <div>
             Count:{count}<br />
-            <button onClick={increase}>Add 2</button>
+            <button onClick={() => increase(2)}>Add 2</button>
             <br />
         </div>
     );
