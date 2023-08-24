@@ -15,7 +15,7 @@ export function BookEdit(props) {
         // navigate("/");
     }
     useEffect(() => {
-qE
+
     }, []);
 
 
