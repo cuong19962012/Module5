@@ -15,3 +15,7 @@ export function getBookById(id) {
     const result = axios.get('http://localhost:8000/book/' + id);
     return result;
 }
+export function updateBook(book) {
+    const result = axios.put('http://localhost:8000/book/' + book.id, book);
+    return result;
+}

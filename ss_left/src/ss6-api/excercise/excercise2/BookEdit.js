@@ -1,25 +1,35 @@
 import { Field, Formik, Form } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import * as Service from "../excercise2/Service";
 import { FallingLines } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export function BookEdit(props) {
-    // const navigate = useNavigate();
-
-    async function getBook(values) {
-        // let booktitle = await Service.addBook(values);
-        // toast(`${booktitle.data.title} Created`);
-        // navigate("/");
+export function BookEdit() {
+    const pram = useParams();
+    const navigate = useNavigate();
+    let [selectedBook, setSelectedBook] = useState({});
+    function getBook(pram) {
+        Service.getBookById(pram).then(res => {
+            setSelectedBook(selectedBook = res.data);
+        })
     }
     useEffect(() => {
-
+        getBook(pram.id);
     }, []);
 
+    const updateBook = async (book) => {
+        await Service.updateBook(book).then(res => {
+            toast(`${res.data.title} Update`);
+            navigate("/");
+        })
+    };
+    if (!selectedBook.id)
+        return null;
 
     return (
+
         <div className="container">
             <div className="d-flex justify-content-between">
                 <p className="fw-bold display-6">Libray</p>
@@ -28,11 +38,12 @@ export function BookEdit(props) {
             <div className="d-flex justify-content-center">
                 <Formik
                     initialValues={{
-                        title: '',
-                        quantity: ''
+                        id: selectedBook.id,
+                        title: selectedBook.title,
+                        quantity: selectedBook.quantity
                     }}
                     onSubmit={(values) => {
-                       
+                        updateBook(values)
                     }}
                 >
                     {

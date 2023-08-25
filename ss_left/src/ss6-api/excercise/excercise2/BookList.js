@@ -3,22 +3,38 @@ import { useState } from "react";
 import * as Service from "../excercise2/Service"
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import ModalDelete from "./ModalDelete";
+import { toast } from "react-toastify";
+import { ModalDelete } from "./ModalDelete";
+
 export function BookList() {
 
     let [bookList, setBookList] = useState([]);
+    let [book, setBook] = useState({})
 
     useEffect(() => {
         Service.getAll().then(res => {
-            setBookList(b => (b.current = res.data))
+            setBookList(res.data)
         })
     }, [])
 
-    const deletedRender = () => {
+    const deletedRender = async (id, title) => {
+        setBook({ show: false });
+        await Service.deleteBook(id);
+        toast(`${title} deleted`);
         Service.getAll().then(res => {
-            setBookList(b => (b.current = res.data))
+            setBookList(res.data)
         })
     };
+
+    const deleteBook = (id, title) => {
+        setBook(pre => (
+            pre = {
+                id: id,
+                title: title,
+                show: true
+            }
+        ));
+    }
 
 
 
@@ -49,7 +65,7 @@ export function BookList() {
                                 <td>
                                     <div className="d-flex justify-content-evenly">
                                         <Link to={`/edit/${element.id}`}><button className="btn btn-primary">Edit</button></Link>
-                                        <ModalDelete id={element.id} title={element.title} func={deletedRender} />
+                                        <button className="btn btn-danger" onClick={() => deleteBook(element.id, element.title)}>Delete</button>
                                     </div>
                                 </td>
                             </tr>
@@ -57,6 +73,7 @@ export function BookList() {
                     </tbody>
                 </table>
             </div>
+            <ModalDelete id={book.id} title={book.title} show={book.show} deletedRender={() => deletedRender(book.id, book.title)} />
         </div>
     );
 }
