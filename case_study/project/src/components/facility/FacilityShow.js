@@ -22,7 +22,7 @@ export function FacilityShow() {
             <div className="d-flex flex-wrap justify-content-start gap-4 m-5">
 
                 {facilitys.map((e) => (
-                    <div
+                    <div key={e.id}
                         className="card flex-grow-1"
                         style={{ width: "15rem", borderRadius: "2rem", padding: 10 }}
                     >
@@ -37,9 +37,11 @@ export function FacilityShow() {
                             <p className="card-text">
                                 {e.more}
                             </p>
-                            <a href="#" className="btn btn-primary rounded-pill">
-                                Edit
-                            </a>
+                            <Link to={`/facility/edit/${e.id}`} >
+                                <button className="btn btn-primary rounded-pill">
+                                    Edit
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 ))}

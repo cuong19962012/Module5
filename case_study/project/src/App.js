@@ -31,7 +31,7 @@ function App() {
                       <Route path="house" element={<FacilityCreateHouse />} />
                       <Route path="room" element={<FacilityCreateRoom />} />
                     </Route>
-                    <Route path="edit" element={<FacilityEdit />} />
+                    <Route path="edit/:id" element={<FacilityEdit />} />
                   </Route>
                   <Route path="customer/">
                     <Route path="" element={<CustomerShow />} />

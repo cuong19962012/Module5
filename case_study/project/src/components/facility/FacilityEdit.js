@@ -1,31 +1,42 @@
 import * as serviceFacility from '../service/ServiceFacility';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Form, Formik, Field } from 'formik';
+import { useState } from 'react';
+import { useEffect } from 'react';
 export function FacilityEdit() {
     const navigate = useNavigate();
-
-
-    
-    const create = async (facility) => {
-        await serviceFacility.createFacility(facility);
+    const pram = useParams();
+    let [selectedFacility, setSelectedFacility] = useState({});
+    const getFacilityById = async () => {
+        const facility = await serviceFacility.getFacilityById(pram.id);
+        setSelectedFacility(selectedFacility = facility);
+    }
+    useEffect(() => {
+        getFacilityById();
+    }, [])
+    const edit = async (facility) => {
+        await serviceFacility.editFacility(pram, facility);
         navigate('/');
     }
+    if (selectedFacility.id == null)
+        return null;
     return (
         <Formik
             initialValues={{
-                "name": '',
-                "useArea": '',
-                "price": '',
-                "maxOfPersons": '',
-                "standard": '',
-                "more": '',
-                "poolArea": '',
-                "numberOfFloor": '',
-                "kindOfRent": 'day',
-                "type": "villa"
+                "id": selectedFacility.id,
+                "name": selectedFacility.name,
+                "useArea": selectedFacility.useArea,
+                "price": selectedFacility.price,
+                "maxOfPersons": selectedFacility.maxOfPersons,
+                "standard": selectedFacility.standard,
+                "more": selectedFacility.more,
+                "poolArea": selectedFacility.poolArea,
+                "numberOfFloor": selectedFacility.numberOfFloor,
+                "kindOfRent": selectedFacility.kindOfRent,
+                "type": selectedFacility.type
             }}
             onSubmit={(facility) => {
-                create(facility);
+                edit(facility);
             }}
         >
             <Form id="contactForm" data-sb-form-api-token="API_TOKEN">
@@ -81,40 +92,58 @@ export function FacilityEdit() {
                     </Field>
                     <label htmlFor="kindOfRent">Kind Of Rent</label>
                 </div>
-                <div className="form-floating mb-3">
-                    <Field
-                        className="form-control"
-                        id=""
-                        name="standard"
-                        type="text"
-                        placeholder="Standard"
-                        data-sb-validations=""
-                    />
-                    <label htmlFor="standard">Standard</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <Field as='textarea'
-                        className="form-control"
-                        id=""
-                        col='10'
-                        name="more"
-                        placeholder="Description"
-                        data-sb-validations=""
-                    />
-                    <label htmlFor="more">Description</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <Field
-                        className="form-control"
-                        id=""
-                        type="number"
-                        name="poolArea"
-                        placeholder="Pool Of Area"
-                        data-sb-validations=""
-                    />
-                    <label htmlFor="poolOfArea">Pool Of Area</label>
-                </div>
-                <div className="form-floating mb-3">
+                {
+                    selectedFacility.standard ?
+                        <div className="form-floating mb-3">
+                            <Field
+                                className="form-control"
+                                id=""
+                                name="standard"
+                                type="text"
+                                placeholder="Standard"
+                                data-sb-validations=""
+                            />
+                            <label htmlFor="standard">Standard</label>
+                        </div> : ""
+                }
+                {selectedFacility.type === 'room' ?
+                    <div className="form-floating mb-3">
+                        <Field as='textarea'
+                            className="form-control"
+                            id=""
+                            col='10'
+                            name="more"
+                            placeholder="Accompanied Service"
+                            data-sb-validations=""
+                        />
+                        <label htmlFor="more">Accompanied Service</label>
+                    </div> :
+                    <div className="form-floating mb-3">
+                        <Field as='textarea'
+                            className="form-control"
+                            id=""
+                            col='10'
+                            name="more"
+                            placeholder="Description"
+                            data-sb-validations=""
+                        />
+                        <label htmlFor="more">Description</label>
+                    </div>
+                }
+                {
+                    selectedFacility.poolArea ? <div className="form-floating mb-3">
+                        <Field
+                            className="form-control"
+                            id=""
+                            type="number"
+                            name="poolArea"
+                            placeholder="Pool Of Area"
+                            data-sb-validations=""
+                        />
+                        <label htmlFor="poolOfArea">Pool Of Area</label>
+                    </div> : ''
+                }
+                {selectedFacility.numberOfFloor ? <div className="form-floating mb-3">
                     <Field
                         className="form-control"
                         id=""
@@ -124,7 +153,7 @@ export function FacilityEdit() {
                         data-sb-validations=""
                     />
                     <label htmlFor="numberOfFloor">Number Of Floor</label>
-                </div>
+                </div> : ''}
                 <div className="d-grid">
                     <button className="btn btn-primary btn-lg" id="" type="submit">
                         Create

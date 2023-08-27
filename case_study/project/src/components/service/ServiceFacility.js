@@ -21,3 +21,12 @@ export async function editFacility(id, facility) {
         console.log(e);
     }
 }
+export async function getFacilityById(id) {
+    try {
+        const result = await axios.get('http://localhost:8000/facility/' + id);
+        return result.data;
+    } catch (e) {
+        console.log(e);
+
+    }
+}
