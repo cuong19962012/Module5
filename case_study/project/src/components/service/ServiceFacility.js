@@ -16,7 +16,7 @@ export async function createFacility(facility) {
 }
 export async function editFacility(id, facility) {
     try {
-        await axios.put('http://localhost:8000/facility' + id, facility);
+        await axios.put('http://localhost:8000/facility/' + id, facility);
     } catch (e) {
         console.log(e);
     }

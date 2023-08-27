@@ -117,14 +117,14 @@
       "id": 9
     },
     {
-      "name": "3wef",
+      "id": 10,
+      "name": "fwefew",
       "useArea": 333,
       "price": 333,
       "maxOfPersons": 444,
       "more": "fewfew",
       "kindOfRent": "day",
-      "type": "room",
-      "id": 10
+      "type": "room"
     }
   ]
 }

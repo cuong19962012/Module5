@@ -15,7 +15,7 @@ export function FacilityEdit() {
         getFacilityById();
     }, [])
     const edit = async (facility) => {
-        await serviceFacility.editFacility(pram, facility);
+        await serviceFacility.editFacility(pram.id, facility);
         navigate('/');
     }
     if (selectedFacility.id == null)
@@ -156,7 +156,7 @@ export function FacilityEdit() {
                 </div> : ''}
                 <div className="d-grid">
                     <button className="btn btn-primary btn-lg" id="" type="submit">
-                        Create
+                        Edit
                     </button>
                 </div>
             </Form>
