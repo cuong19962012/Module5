@@ -1,83 +1,99 @@
+import * as serviceFacility from '../service/ServiceFacility';
+import { useNavigate } from 'react-router-dom';
+import { Form, Formik, Field } from 'formik';
 export function FacilityCreateRoom() {
+    const navigate = useNavigate();
+    const create = async (facility) => {
+        await serviceFacility.createFacility(facility);
+        navigate('/');
+    }
     return (
-        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-            <div className="form-floating mb-3">
-                <input
-                    className="form-control"
-                    id="name"
-                    type="text"
-                    placeholder="Name"
-                    data-sb-validations=""
-                />
-                <label htmlFor="name">Name</label>
-            </div>
-            <div className="form-floating mb-3">
-                <input
-                    className="form-control"
-                    id="useArea"
-                    type="text"
-                    placeholder="Use Area"
-                    data-sb-validations=""
-                />
-                <label htmlFor="useArea">Use Area</label>
-            </div>
-            <div className="form-floating mb-3">
-                <input
-                    className="form-control"
-                    id="fee"
-                    type="text"
-                    placeholder="Fee"
-                    data-sb-validations=""
-                />
-                <label htmlFor="fee">Fee</label>
-            </div>
-            <div className="form-floating mb-3">
-                <input
-                    className="form-control"
-                    id="maxOfPersons"
-                    type="text"
-                    placeholder="Max Of Persons"
-                    data-sb-validations=""
-                />
-                <label htmlFor="maxOfPersons">Max Of Persons</label>
-            </div>
-            <div className="form-floating mb-3">
-                <select className="form-select" id="kindOfRent" aria-label="Kind Of Rent">
-                    <option value="Year">Year</option>
-                    <option value="Month">Month</option>
-                    <option value="Day">Day</option>
-                    <option value="Hour">Hour</option>
-                </select>
-                <label htmlFor="kindOfRent">Kind Of Rent</label>
-            </div>
-            <div className="form-floating mb-3">
-                <input
-                    className="form-control"
-                    id="accompaniedService"
-                    type="text"
-                    placeholder="Accompanied Service"
-                    data-sb-validations=""
-                />
-                <label htmlFor="accompaniedService">Accompanied Service</label>
-            </div>
-            <div className="d-none" id="submitSuccessMessage">
-                <div className="text-center mb-3">
-                    <div className="fw-bolder">Form submission successful!</div>
-                    <p>To activate this form, sign up at</p>
-                    <a href="https://startbootstrap.com/solution/contact-forms">
-                        https://startbootstrap.com/solution/contact-forms
-                    </a>
+        <Formik
+            initialValues={{
+                "name": '',
+                "useArea": '',
+                "price": '',
+                "maxOfPersons": '',
+                "more": '',
+                "kindOfRent": 'day',
+                "type": "room"
+            }}
+            onSubmit={(facility) => {
+                create(facility);
+            }}
+        >
+            <Form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <div className="form-floating mb-3">
+                    <Field
+                        className="form-control"
+                        id=""
+                        name="name"
+                        type="text"
+                        placeholder="Name"
+                        data-sb-validations=""
+                    />
+                    <label htmlFor="name">Name</label>
                 </div>
-            </div>
-            <div className="d-none" id="submitErrorMessage">
-                <div className="text-center text-danger mb-3">Error sending message!</div>
-            </div>
-            <div className="d-grid">
-                <button className="btn btn-primary btn-lg" id="submitButton" type="submit">
-                    Create
-                </button>
-            </div>
-        </form>
-
+                <div className="form-floating mb-3">
+                    <Field
+                        className="form-control"
+                        id="" name="useArea"
+                        type="number"
+                        placeholder="Use Area"
+                        data-sb-validations=""
+                    />
+                    <label htmlFor="useArea">Use Area (M2)</label>
+                </div>
+                <div className="form-floating mb-3">
+                    <Field
+                        className="form-control"
+                        id=""
+                        name="price"
+                        type="number"
+                        placeholder="Price"
+                        data-sb-validations=""
+                    />
+                    <label htmlFor="fee">Price</label>
+                </div>
+                <div className="form-floating mb-3">
+                    <Field
+                        className="form-control"
+                        id=""
+                        name="maxOfPersons"
+                        type="number"
+                        placeholder="Max Of Persons"
+                        data-sb-validations=""
+                    />
+                    <label htmlFor="maxOfPersons">Max Of Persons</label>
+                </div>
+                <div className="form-floating mb-3">
+                    <Field as='select' className="form-select" id="" name='kindOfRent' aria-label="Kind Of Rent">
+                        <option value="year">Year</option>
+                        <option value="month">Month</option>
+                        <option value="day">Day</option>
+                        <option value="hour">Hour</option>
+                    </Field>
+                    <label htmlFor="kindOfRent">Kind Of Rent</label>
+                </div>
+              
+                <div className="form-floating mb-3">
+                    <Field as='textarea'
+                        className="form-control"
+                        id=""
+                        col='10'
+                        name="more"
+                        placeholder="Accompanied Service"
+                        data-sb-validations=""
+                    />
+                    <label htmlFor="more">Accompanied Service</label>
+                </div>
+                
+                <div className="d-grid">
+                    <button className="btn btn-primary btn-lg" id="" type="submit">
+                        Create
+                    </button>
+                </div>
+            </Form>
+        </Formik>
     );
 }

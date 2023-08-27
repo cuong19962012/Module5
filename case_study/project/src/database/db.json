@@ -1,0 +1,130 @@
+{
+  "facility": [
+    {
+      "id": 1,
+      "name": "Villa Beach Front",
+      "useArea": 25000,
+      "price": 10000000,
+      "maxOfPersons": 10,
+      "standard": "vip",
+      "more": "Có hồ bơi",
+      "poolArea": "500",
+      "numberOfFloor": "4",
+      "kindOfRent": "day",
+      "type": "Villa"
+    },
+    {
+      "id": 2,
+      "name": "House Princess 01",
+      "useArea": 14000,
+      "price": 5000000,
+      "maxOfPersons": 7,
+      "standard": "vip",
+      "more": "Có thêm bếp nướng",
+      "poolArea": "null",
+      "numberOfFloor": "3",
+      "kindOfRent": "month",
+      "type": "House"
+    },
+    {
+      "id": 3,
+      "name": "Room Twin 01",
+      "useArea": 5000,
+      "price": 1000000,
+      "maxOfPersons": 2,
+      "standard": "normal",
+      "more": "Có tivi",
+      "poolArea": "null",
+      "numberOfFloor": "null",
+      "kindOfRent": "hour",
+      "type": "Room"
+    },
+    {
+      "id": 4,
+      "name": "Villa No Beach Front",
+      "useArea": 22000,
+      "price": 9000000,
+      "maxOfPersons": 8,
+      "standard": "normal",
+      "more": "Có hồ bơi",
+      "poolArea": "300",
+      "numberOfFloor": "3",
+      "kindOfRent": "day",
+      "type": "Villa"
+    },
+    {
+      "id": 5,
+      "name": "House Princess 02",
+      "useArea": 10000,
+      "price": 4000000,
+      "maxOfPersons": 5,
+      "standard": "normal",
+      "more": "Có thêm bếp nướng",
+      "poolArea": "null",
+      "numberOfFloor": "2",
+      "kindOfRent": "day",
+      "type": "House"
+    },
+    {
+      "id": 6,
+      "name": "Room Twin 02",
+      "useArea": 3000,
+      "price": 900000,
+      "maxOfPersons": 2,
+      "standard": "normal",
+      "more": "Có tivi",
+      "poolArea": "null",
+      "numberOfFloor": "null",
+      "kindOfRent": "hour",
+      "type": "Room"
+    },
+    {
+      "name": "ewfew",
+      "useArea": 10000,
+      "price": 10000000,
+      "maxOfPersons": 10,
+      "standard": "vip",
+      "more": "fewfew",
+      "poolArea": 100,
+      "numberOfFloor": 1,
+      "kindOfRent": "day",
+      "type": "Villa",
+      "id": 7
+    },
+    {
+      "name": "ưefwefew",
+      "useArea": 444,
+      "price": 24425335,
+      "maxOfPersons": 3,
+      "standard": "ềwff",
+      "more": "ưefwe",
+      "poolArea": "",
+      "numberOfFloor": 33,
+      "kindOfRent": "day",
+      "type": "Villa",
+      "id": 8
+    },
+    {
+      "name": "fewfewf",
+      "useArea": 33,
+      "price": 5435435,
+      "maxOfPersons": 4,
+      "standard": "reg",
+      "more": "reg",
+      "numberOfFloor": 4,
+      "kindOfRent": "day",
+      "type": "Villa",
+      "id": 9
+    },
+    {
+      "name": "3wef",
+      "useArea": 333,
+      "price": 333,
+      "maxOfPersons": 444,
+      "more": "fewfew",
+      "kindOfRent": "day",
+      "type": "room",
+      "id": 10
+    }
+  ]
+}

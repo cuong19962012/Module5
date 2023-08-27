@@ -1,12 +1,35 @@
+import * as serviceFacility from '../service/ServiceFacility';
+import { useNavigate } from 'react-router-dom';
+import { Form, Formik, Field } from 'formik';
 export function FacilityCreateHouse() {
+    const navigate = useNavigate();
+    const create = async (facility) => {
+        await serviceFacility.createFacility(facility);
+        navigate('/');
+    }
     return (
-        <div className="container">
-            <h1 className="text-center m-5">Create Facility</h1>
-            <form id="" data-sb-form-api-token="API_TOKEN">
+        <Formik
+            initialValues={{
+                "name": '',
+                "useArea": '',
+                "price": '',
+                "maxOfPersons": '',
+                "standard": '',
+                "more": '',
+                "numberOfFloor": '',
+                "kindOfRent": 'day',
+                "type": "house"
+            }}
+            onSubmit={(facility) => {
+                create(facility);
+            }}
+        >
+            <Form id="contactForm" data-sb-form-api-token="API_TOKEN">
                 <div className="form-floating mb-3">
-                    <input
+                    <Field
                         className="form-control"
                         id=""
+                        name="name"
                         type="text"
                         placeholder="Name"
                         data-sb-validations=""
@@ -14,48 +37,51 @@ export function FacilityCreateHouse() {
                     <label htmlFor="name">Name</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input
+                    <Field
                         className="form-control"
-                        id=""
-                        type="text"
+                        id="" name="useArea"
+                        type="number"
                         placeholder="Use Area"
                         data-sb-validations=""
                     />
-                    <label htmlFor="useArea">Use Area</label>
+                    <label htmlFor="useArea">Use Area (M2)</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input
+                    <Field
                         className="form-control"
                         id=""
-                        type="text"
-                        placeholder="Fee"
+                        name="price"
+                        type="number"
+                        placeholder="Price"
                         data-sb-validations=""
                     />
-                    <label htmlFor="fee">Fee</label>
+                    <label htmlFor="fee">Price</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input
+                    <Field
                         className="form-control"
                         id=""
-                        type="text"
+                        name="maxOfPersons"
+                        type="number"
                         placeholder="Max Of Persons"
                         data-sb-validations=""
                     />
                     <label htmlFor="maxOfPersons">Max Of Persons</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <select className="form-select" id="" aria-label="Kind Of Rent">
-                        <option value="Year">Year</option>
-                        <option value="Month">Month</option>
-                        <option value="Day">Day</option>
-                        <option value="Hour">Hour</option>
-                    </select>
+                    <Field as='select' className="form-select" id="" name='kindOfRent' aria-label="Kind Of Rent">
+                        <option value="year">Year</option>
+                        <option value="month">Month</option>
+                        <option value="day">Day</option>
+                        <option value="hour">Hour</option>
+                    </Field>
                     <label htmlFor="kindOfRent">Kind Of Rent</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input
+                    <Field
                         className="form-control"
                         id=""
+                        name="standard"
                         type="text"
                         placeholder="Standard"
                         data-sb-validations=""
@@ -63,43 +89,33 @@ export function FacilityCreateHouse() {
                     <label htmlFor="standard">Standard</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input
+                    <Field as='textarea'
                         className="form-control"
                         id=""
-                        type="text"
-                        placeholder="Accompanied Service"
+                        col='10'
+                        name="more"
+                        placeholder="Description"
                         data-sb-validations=""
                     />
-                    <label htmlFor="more">Accompanied Service</label>
+                    <label htmlFor="more">Description</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input
+                    <Field
                         className="form-control"
                         id=""
-                        type="text"
+                        name="numberOfFloor"
+                        type="number"
                         placeholder="Number Of Floor"
                         data-sb-validations=""
                     />
                     <label htmlFor="numberOfFloor">Number Of Floor</label>
-                </div>
-                <div className="d-none" id="">
-                    <div className="text-center mb-3">
-                        <div className="fw-bolder">Form submission successful!</div>
-                        <p>To activate this form, sign up at</p>
-                        <a href="https://startbootstrap.com/solution/contact-forms">
-                            https://startbootstrap.com/solution/contact-forms
-                        </a>
-                    </div>
-                </div>
-                <div className="d-none" id="">
-                    <div className="text-center text-danger mb-3">Error sending message!</div>
                 </div>
                 <div className="d-grid">
                     <button className="btn btn-primary btn-lg" id="" type="submit">
                         Create
                     </button>
                 </div>
-            </form>
-        </div>
+            </Form>
+        </Formik>
     );
 }
