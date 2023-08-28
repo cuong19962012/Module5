@@ -1,4 +1,15 @@
+import { useEffect } from "react";
+import { useState } from "react";
+import * as Service from '../service/ServiceCustomer';
 export function CustomerShow() {
+    const [customers, setCustomers] = useState([]);
+    useEffect(() => {
+        getAll();
+    }, []);
+    const getAll = async () => {
+        const result = await Service.getAll();
+        setCustomers(result);
+    }
     return (
         <>
             <h1 className="text-center m-5">List Customer</h1>
@@ -10,7 +21,7 @@ export function CustomerShow() {
                                 <div className="card bg-dark shadow-2-strong">
                                     <div className="card-body">
                                         <div className="table-responsive">
-                                            <table className="table table-dark table-borderless mb-0">
+                                            <table className="table table-dark table-borderless mb-0 text-center">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">NAME</th>
@@ -19,23 +30,28 @@ export function CustomerShow() {
                                                         <th scope="col">IDENTITY</th>
                                                         <th scope="col">NUMBER PHONE</th>
                                                         <th scope="col">EMAIL</th>
-                                                        <th scope="col">KIND OF CUSTOMER</th>
                                                         <th scope="col">ADDRESS</th>
+                                                        <th scope="col">KIND OF CUSTOMER</th>
                                                         <th scope="col">ACTION</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>#</th>
-                                                        <th>#</th>
-                                                        <th>#</th>
-                                                        <th>#</th>
-                                                        <th>#</th>
-                                                        <th>#</th>
-                                                        <th>#</th>
-                                                        <th>#</th>
-                                                    </tr>
+                                                    {customers.map(customer => (
+                                                        <tr key={customer.id}>
+                                                            <td>{customer.name}</td>
+                                                            <td>{customer.birthOfDay}</td>
+                                                            <td>{customer.Gender == true ? 'Male' : 'Female'}</td>
+                                                            <td>{customer.identity}</td>
+                                                            <td>{customer.numberPhone}</td>
+                                                            <td>{customer.email}</td>
+                                                            <td>{customer.address}</td>
+                                                            <td>{customer.kindOfCustomer}</td>
+                                                            <td className="d-flex justify-content-between">
+                                                                <button type="button" className="btn btn-success">Edit</button>
+                                                                <button type="button" className="btn btn-danger">Delete</button>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
                                                 </tbody>
                                             </table>
                                         </div>
