@@ -1,19 +1,10 @@
-import { GET_ALL_USERS } from "./Types";
-
-const init = {
-    users: []
-}
-
-const usersReducer = (state = init, action) => {
-    const { type, payload } = action;
-    switch (type) {
-        case GET_ALL_USERS:
-            return {
-                ...state,
-                users: payload
-            }
+import { GET_ALL_SUCCESS } from "./Types";
+const reducer = (state = { users: [] }, action) => {
+    switch (action.type) {
+        case GET_ALL_SUCCESS:
+            return { ...state, users: action.users };
         default:
             return state;
     }
 }
-export default usersReducer
+export default reducer;
