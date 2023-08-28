@@ -17,7 +17,7 @@ export function BookList() {
         })
     }, [])
 
-    const deletedRender = async (id, title) => {
+    const deletedBook = async (id, title) => {
         setBook({ show: false });
         await Service.deleteBook(id);
         toast(`${title} deleted`);
@@ -26,7 +26,7 @@ export function BookList() {
         })
     };
 
-    const deleteBook = (id, title) => {
+    const setDeleteBook = (id, title) => {
         setBook(pre => (
             pre = {
                 id: id,
@@ -65,7 +65,7 @@ export function BookList() {
                                 <td>
                                     <div className="d-flex justify-content-evenly">
                                         <Link to={`/edit/${element.id}`}><button className="btn btn-primary">Edit</button></Link>
-                                        <button className="btn btn-danger" onClick={() => deleteBook(element.id, element.title)}>Delete</button>
+                                        <button className="btn btn-danger" onClick={() => setDeleteBook(element.id, element.title)}>Delete</button>
                                     </div>
                                 </td>
                             </tr>
@@ -73,7 +73,7 @@ export function BookList() {
                     </tbody>
                 </table>
             </div>
-            <ModalDelete id={book.id} title={book.title} show={book.show} deletedRender={() => deletedRender(book.id, book.title)} />
+            <ModalDelete id={book.id} title={book.title} show={book.show} deletedBook={() => deletedBook(book.id, book.title)} />
         </div>
     );
 }

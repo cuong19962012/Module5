@@ -20,7 +20,7 @@ export function ModalDelete(props) {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={() => props.deletedRender(props.id, props.title)}>
+                    <Button variant="primary" onClick={() => props.deletedBook(props.id, props.title)}>
                         Confirm
                     </Button>
                 </Modal.Footer>
