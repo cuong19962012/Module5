@@ -1,14 +1,13 @@
-import { General } from "./ss7_redux/practice/practice1/General";
-import { Provider } from 'react-redux'
-import store from "./ss7_redux/practice/practice1/store"
+
+import { Provider } from 'react-redux';
 import React from "react";
+import { Users } from "./ss7_redux/excercise/Users";
+import store from './ss7_redux/excercise/store';
 export function App() {
   return (
-    <React.StrictMode>
-      <Provider store={store}>
-        <General />
-      </Provider>
-    </React.StrictMode>
+    <Provider store={store}>
+      <Users />
+    </Provider>
   );
 }
 
