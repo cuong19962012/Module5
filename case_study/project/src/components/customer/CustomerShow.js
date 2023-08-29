@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import * as Service from '../service/ServiceCustomer';
+import { Link } from "react-router-dom";
 export function CustomerShow() {
     const [customers, setCustomers] = useState([]);
     useEffect(() => {
@@ -13,6 +14,9 @@ export function CustomerShow() {
     return (
         <>
             <h1 className="text-center m-5">List Customer</h1>
+            <div className='d-flex justify-content-start m-5'>
+                <Link to='/customer/create'><button className="btn btn-primary">Create customer</button></Link>
+            </div>
             <section className="intro">
                 <div className="mask d-flex align-items-center ">
                     <div className="container">
@@ -47,7 +51,7 @@ export function CustomerShow() {
                                                             <td>{customer.address}</td>
                                                             <td>{customer.kindOfCustomer}</td>
                                                             <td className="d-flex justify-content-between">
-                                                                <button type="button" className="btn btn-success">Edit</button>
+                                                                <Link to={`/customer/edit/${customer.id}`}><button type="button" className="btn btn-success">Edit</button></Link>
                                                                 <button type="button" className="btn btn-danger">Delete</button>
                                                             </td>
                                                         </tr>

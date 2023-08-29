@@ -48,7 +48,7 @@
       "standard": "normal",
       "more": "Có hồ bơi",
       "poolArea": "300",
-      "numberOfFloor": "3",
+      "numberOfFloor": 5,
       "kindOfRent": "day",
       "type": "Villa"
     },
@@ -125,6 +125,19 @@
       "more": "fewfew",
       "kindOfRent": "day",
       "type": "room"
+    },
+    {
+      "name": "",
+      "useArea": "",
+      "price": "",
+      "maxOfPersons": "",
+      "standard": "",
+      "more": "",
+      "poolArea": "",
+      "numberOfFloor": "",
+      "kindOfRent": "day",
+      "type": "villa",
+      "id": 11
     }
   ],
   "customer": [
@@ -132,111 +145,122 @@
       "id": 1,
       "name": "Nguyễn Thị Hào",
       "birthOfDay": "1970-11-07",
-      "gender": "true",
+      "gender": "nam",
       "identity": 643431213,
       "numberPhone": "0945423362",
       "email": "thihao07@gmail.com",
       "address": "23 Nguyễn Hoàng, Đà Nẵng",
-      "KindOfCustomer": "Member"
+      "kindOfCustomer": "Member"
     },
     {
       "id": 2,
       "name": "Phạm Xuân Diệu",
       "birthOfDay": "1992-08-08",
-      "gender": "false",
+      "gender": "nu",
       "identity": 865342123,
       "numberPhone": "0954333333",
       "email": "xuandieu92@gmail.com",
       "address": "K77/22 Thái Phiên, Quảng Trị",
-      "KindOfCustomer": "Gold"
+      "kindOfCustomer": "Member"
     },
     {
       "id": 3,
       "name": "Trương Đình Nghệ",
       "birthOfDay": "1990-02-27",
-      "gender": "true",
+      "gender": "nam",
       "identity": 488645199,
       "numberPhone": "0373213122",
       "email": "nghenhan2702@gmail.com",
       "address": "K323/12 Ông Ích Khiêm, Vinh",
-      "KindOfCustomer": "Diamond"
+      "kindOfCustomer": "Diamond"
     },
     {
       "id": 4,
       "name": "Dương Văn Quan",
       "birthOfDay": "1981-07-08",
-      "gender": "true",
+      "gender": "nam",
       "identity": 543432111,
       "numberPhone": "0490039241",
       "email": "duongquan@gmail.com",
       "address": "K453/12 Lê Lợi, Đà Nẵng",
-      "KindOfCustomer": "Diamond"
+      "kindOfCustomer": "Diamond"
     },
     {
       "id": 5,
       "name": "Hoàng Trần Nhi Nhi",
       "birthOfDay": "1995-12-09",
-      "gender": "false",
+      "gender": "nu",
       "identity": 795453345,
       "numberPhone": "0312345678",
       "email": "nhinhi123@gmail.com",
       "address": "224 Lý Thái Tổ, Gia Lai",
-      "KindOfCustomer": "Silver"
+      "kindOfCustomer": "Silver"
     },
     {
       "id": 6,
       "name": "Tôn Nữ Mộc Châu",
       "birthOfDay": "2005-12-06",
-      "gender": "false",
+      "gender": "nu",
       "identity": 732434215,
       "numberPhone": "0988888844",
       "email": "tonnuchau@gmail.com",
       "address": "37 Yên Thế, Đà Nẵng",
-      "KindOfCustomer": "Silver"
+      "kindOfCustomer": "Silver"
     },
     {
       "id": 7,
       "name": "Nguyễn Mỹ Kim",
       "birthOfDay": "1984-04-08",
-      "gender": "false",
+      "gender": "nu",
       "identity": 856453123,
       "numberPhone": "0912345698",
       "email": "kimcuong84@gmail.com",
       "address": "K123/45 Lê Lợi, Hồ Chí Minh",
-      "KindOfCustomer": "Diamond"
+      "kindOfCustomer": "Diamond"
     },
     {
       "id": 8,
       "name": "Nguyễn Thị Hào",
       "birthOfDay": "1999-04-08",
-      "gender": "false",
+      "gender": "nu",
       "identity": 965656433,
       "numberPhone": "0763212345",
       "email": "haohao99@gmail.com",
       "address": "55 Nguyễn Văn Linh, Kon Tum",
-      "KindOfCustomer": "Gold"
+      "kindOfCustomer": "Gold"
     },
     {
       "id": 9,
       "name": "Trần Đại Danh",
       "birthOfDay": "1994-07-01",
-      "gender": "true",
+      "gender": "nam",
       "identity": 432341235,
       "numberPhone": "0643343433",
       "email": "danhhai99@gmail.com",
       "address": "24 Lý Thường Kiệt, Quảng Ngãi",
-      "KindOfCustomer": "Diamond"
+      "kindOfCustomer": "Diamond"
     },
     {
       "id": 10,
       "name": "Nguyễn Tâm Đắc",
       "birthOfDay": "1989-07-01",
-      "gender": "true",
+      "gender": "nam",
       "identity": 344343432,
       "numberPhone": "0987654321",
       "email": "dactam@gmail.com",
       "address": "22 Ngô Quyền, Đà Nẵng",
-      "KindOfCustomer": "Platinium"
+      "kindOfCustomer": "Platinium"
+    },
+    {
+      "name": "wfe",
+      "birthOfDay": "2023-08-19",
+      "gender": "nam",
+      "identity": "ewf",
+      "numberPhone": "ewf243",
+      "email": "ewf@gmail.com",
+      "address": "wef",
+      "KindOfCustomer": "",
+      "id": 11
     }
   ]
 }
