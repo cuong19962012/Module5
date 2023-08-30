@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import * as Service from '../service/ServiceCustomer';
 import { Link } from "react-router-dom";
+import ModalDelete from "../modal/ModalDelete";
 export function CustomerShow() {
     const [customers, setCustomers] = useState([]);
     useEffect(() => {
@@ -10,6 +11,10 @@ export function CustomerShow() {
     const getAll = async () => {
         const result = await Service.getAll();
         setCustomers(result);
+    };
+
+    const showModalDelete = (){
+
     }
     return (
         <>
@@ -66,6 +71,7 @@ export function CustomerShow() {
                     </div>
                 </div>
             </section>
+            <ModalDelete />
         </>
 
     );
