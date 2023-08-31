@@ -1,6 +1,7 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik, yupToFormErrors } from "formik";
 import { useNavigate } from "react-router-dom";
 import { createContact } from '../service/ServiceContact';
+import * as Yup from 'yup';
 export function ContactCreate() {
     const navigate = useNavigate();
     const create = async (contact) => {
@@ -19,6 +20,17 @@ export function ContactCreate() {
                         "deposit": '',
                         "totalPrice": ''
                     }}
+
+                    validationSchema={Yup.object({
+                        contactCode: Yup.string().required("Not empty"),
+                        startDate: Yup.date().required("Not empty").min(new Date(), "Greater than now"),
+                        endDate: Yup.date().required("Not empty").min(Yup.ref('startDate'), "End date can't be before Start date"),
+                        deposit: Yup.number("Not number").nullable().required("Not Empty").moreThan(0, "Greater than zero"),
+                        totalPrice: Yup.number().required("Not empty").min(Yup.ref('deposit'),"Totalprice can't be less than deposit"),
+                    })}
+
+
+
                     onSubmit={(values) => {
                         create(values);
                     }}
@@ -32,25 +44,22 @@ export function ContactCreate() {
                         <div className="form-floating mb-3">
                             <Field className="form-control" name="startDate" id="startDate" type="date" placeholder="Start Date" data-sb-validations />
                             <label htmlFor="startDate">Start Date</label>
+                            <div style={{ color: 'red' }}><ErrorMessage component="span" name='startDate' /></div>
                         </div>
                         <div className="form-floating mb-3">
                             <Field className="form-control" id="endDate" name="endDate" type="date" placeholder="End Date" data-sb-validations />
                             <label htmlFor="endDate">End Date</label>
+                            <div style={{ color: 'red' }}><ErrorMessage component="span" name='endDate' /></div>
                         </div>
                         <div className="form-floating mb-3">
                             <Field className="form-control" name="deposit" id="deposit" type="number" placeholder="Deposit" data-sb-validations />
                             <label htmlFor="deposit">Deposit</label>
+                            <div style={{ color: 'red' }}><ErrorMessage component="span" name='deposit' /></div>
                         </div>
                         <div className="form-floating mb-3">
                             <Field className="form-control" id="totalPrice" name="totalPrice" type="number" placeholder="Total Price" data-sb-validations />
                             <label htmlFor="totalPrice">Total Price</label>
-                        </div>
-                        <div className="d-none" id="submitSuccessMessage">
-                            <div className="text-center mb-3">
-                                <div className="fw-bolder">Form submission successful!</div>
-                                <p>To activate this form, sign up at</p>
-                                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                            </div>
+                            <div style={{ color: 'red' }}><ErrorMessage component="span" name='totalPrice' /></div>
                         </div>
                         <div className="d-none" id="submitErrorMessage">
                             <div className="text-center text-danger mb-3">Error sending message!</div>

@@ -46,7 +46,7 @@ export function FacilityEdit() {
                     standard: Yup.string().nullable().required(),
                     more: Yup.string().nullable().required("Not Empty"),
                     numberOfFloor: Yup.number("Not number").nullable().required("Not Empty").moreThan(0, "Greater than zero"),
-                    poolArea: Yup.number("Not number").required("Not Empty")..moreThan(0, "Greater than zero"),
+                    poolArea: Yup.number("Not number").required("Not Empty").moreThan(0, "Greater than zero"),
                 })
             }
 
