@@ -21,6 +21,43 @@ export function FacilityEdit() {
     }
     if (selectedFacility.id == null)
         return null;
+
+
+    const validationSchemaDynamic = (values => {
+        switch (values.type) {
+            case 'villa':
+                return Yup.object().shape({
+                    name: Yup.string().required("Not Empty"),
+                    useArea: Yup.number().required().moreThan(0, "Greater than zero"),
+                    price: Yup.number("Not number").required("Not Empty").moreThan(0, "Greater than zero"),
+                    maxOfPersons: Yup.number("Not number").required("Not Empty").moreThan(0, "Greater than zero"),
+                    standard: Yup.string().required(),
+                    more: Yup.string().required("Not Empty"),
+                    numberOfFloor: Yup.number("Not number").required("Not Empty").moreThan(0, "Greater than zero"),
+                    poolArea: Yup.number("Not number").required("Not Empty").moreThan(0, "Greater than zero"),
+                });
+            case 'house':
+                return Yup.object().shape({
+                    name: Yup.string().required("Not Empty"),
+                    useArea: Yup.number().required().moreThan(0, "Greater than zero"),
+                    price: Yup.number("Not number").required("Not Empty").moreThan(0, "Greater than zero"),
+                    maxOfPersons: Yup.number("Not number").required("Not Empty").moreThan(0, "Greater than zero"),
+                    standard: Yup.string().required(),
+                    more: Yup.string().required("Not Empty"),
+                    numberOfFloor: Yup.number("Not number").required("Not Empty").moreThan(0, "Greater than zero"),
+                });
+            default:
+                return Yup.object().shape({
+                    name: Yup.string().required("Not Empty"),
+                    useArea: Yup.number().moreThan(0, "Greater than zero"),
+                    price: Yup.number("Not number").required("Not Empty").moreThan(0, "Greater than zero"),
+                    maxOfPersons: Yup.number("Not number").required("Not Empty").moreThan(0, "Greater than zero"),
+                    more: Yup.string().required("Not Empty"),
+                });
+        }
+    });
+
+
     return (
         <Formik
             initialValues={{
@@ -38,16 +75,7 @@ export function FacilityEdit() {
             }}
 
             validationSchema={
-                Yup.object({
-                    name: Yup.string().nullable().required("Not Empty"),
-                    useArea: Yup.number().nullable().required().moreThan(0, "Greater than zero"),
-                    price: Yup.number("Not number").nullable().required("Not Empty").moreThan(0, "Greater than zero"),
-                    maxOfPersons: Yup.number("Not number").nullable().required("Not Empty").moreThan(0, "Greater than zero"),
-                    standard: Yup.string().nullable().required(),
-                    more: Yup.string().nullable().required("Not Empty"),
-                    numberOfFloor: Yup.number("Not number").nullable().required("Not Empty").moreThan(0, "Greater than zero"),
-                    poolArea: Yup.number("Not number").required("Not Empty").moreThan(0, "Greater than zero"),
-                })
+                validationSchemaDynamic(selectedFacility)
             }
 
             onSubmit={(facility) => {

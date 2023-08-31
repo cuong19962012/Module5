@@ -11,7 +11,7 @@
       "poolArea": 500,
       "numberOfFloor": 4,
       "kindOfRent": "day",
-      "type": "Villa"
+      "type": "villa"
     },
     {
       "id": 2,
@@ -23,7 +23,7 @@
       "more": "Có thêm bếp nướng",
       "numberOfFloor": 3,
       "kindOfRent": "month",
-      "type": "House"
+      "type": "house"
     },
     {
       "id": 3,
@@ -34,7 +34,7 @@
       "standard": "normal",
       "more": "Có tivi",
       "kindOfRent": "hour",
-      "type": "Room"
+      "type": "room"
     },
     {
       "id": 4,
@@ -47,7 +47,7 @@
       "poolArea": 300,
       "numberOfFloor": 5,
       "kindOfRent": "day",
-      "type": "Villa"
+      "type": "villa"
     },
     {
       "id": 5,
@@ -60,7 +60,7 @@
       "poolArea": 333,
       "numberOfFloor": 2,
       "kindOfRent": "day",
-      "type": "House"
+      "type": "house"
     },
     {
       "id": 6,
@@ -71,7 +71,7 @@
       "standard": "normal",
       "more": "Có tivi",
       "kindOfRent": "hour",
-      "type": "Room"
+      "type": "room"
     }
   ],
   "customer": [
