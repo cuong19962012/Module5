@@ -1,8 +1,9 @@
 import * as serviceFacility from '../service/ServiceFacility';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Form, Formik, Field } from 'formik';
+import { Form, Formik, Field, ErrorMessage } from 'formik';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import * as Yup from 'yup';
 export function FacilityEdit() {
     const navigate = useNavigate();
     const pram = useParams();
@@ -35,6 +36,20 @@ export function FacilityEdit() {
                 "kindOfRent": selectedFacility.kindOfRent,
                 "type": selectedFacility.type
             }}
+
+            validationSchema={
+                Yup.object({
+                    name: Yup.string().nullable().required("Not Empty"),
+                    useArea: Yup.number().nullable().required().moreThan(0, "Greater than zero"),
+                    price: Yup.number("Not number").nullable().required("Not Empty").moreThan(0, "Greater than zero"),
+                    maxOfPersons: Yup.number("Not number").nullable().required("Not Empty").moreThan(0, "Greater than zero"),
+                    standard: Yup.string().nullable().required(),
+                    more: Yup.string().nullable().required("Not Empty"),
+                    numberOfFloor: Yup.number("Not number").nullable().required("Not Empty").moreThan(0, "Greater than zero"),
+                    poolArea: Yup.number("Not number").required("Not Empty")..moreThan(0, "Greater than zero"),
+                })
+            }
+
             onSubmit={(facility) => {
                 edit(facility);
             }}
@@ -50,6 +65,7 @@ export function FacilityEdit() {
                         data-sb-validations=""
                     />
                     <label htmlFor="name">Name</label>
+                    <div style={{ color: 'red' }}><ErrorMessage component="span" name='name' /></div>
                 </div>
                 <div className="form-floating mb-3">
                     <Field
@@ -60,6 +76,7 @@ export function FacilityEdit() {
                         data-sb-validations=""
                     />
                     <label htmlFor="useArea">Use Area (M2)</label>
+                    <div style={{ color: 'red' }}><ErrorMessage component="span" name='useArea' /></div>
                 </div>
                 <div className="form-floating mb-3">
                     <Field
@@ -71,6 +88,7 @@ export function FacilityEdit() {
                         data-sb-validations=""
                     />
                     <label htmlFor="fee">Price</label>
+                    <div style={{ color: 'red' }}><ErrorMessage component="span" name='price' /></div>
                 </div>
                 <div className="form-floating mb-3">
                     <Field
@@ -82,6 +100,7 @@ export function FacilityEdit() {
                         data-sb-validations=""
                     />
                     <label htmlFor="maxOfPersons">Max Of Persons</label>
+                    <div style={{ color: 'red' }}><ErrorMessage component="span" name='maxOfPersons' /></div>
                 </div>
                 <div className="form-floating mb-3">
                     <Field as='select' className="form-select" id="" name='kindOfRent' aria-label="Kind Of Rent">
@@ -104,6 +123,7 @@ export function FacilityEdit() {
                                 data-sb-validations=""
                             />
                             <label htmlFor="standard">Standard</label>
+                            <div style={{ color: 'red' }}><ErrorMessage component="span" name='standard' /></div>
                         </div> : ""
                 }
                 {selectedFacility.type === 'room' ?
@@ -117,6 +137,7 @@ export function FacilityEdit() {
                             data-sb-validations=""
                         />
                         <label htmlFor="more">Accompanied Service</label>
+                        <div style={{ color: 'red' }}><ErrorMessage component="span" name='more' /></div>
                     </div> :
                     <div className="form-floating mb-3">
                         <Field as='textarea'
@@ -128,6 +149,7 @@ export function FacilityEdit() {
                             data-sb-validations=""
                         />
                         <label htmlFor="more">Description</label>
+                        <div style={{ color: 'red' }}><ErrorMessage component="span" name='more' /></div>
                     </div>
                 }
                 {
@@ -135,12 +157,13 @@ export function FacilityEdit() {
                         <Field
                             className="form-control"
                             id=""
-                            type="number"
+                            type="text"
                             name="poolArea"
                             placeholder="Pool Of Area"
                             data-sb-validations=""
                         />
                         <label htmlFor="poolOfArea">Pool Of Area</label>
+                        <div style={{ color: 'red' }}><ErrorMessage component="span" name='poolArea' /></div>
                     </div> : ''
                 }
                 {selectedFacility.numberOfFloor ? <div className="form-floating mb-3">
@@ -153,7 +176,10 @@ export function FacilityEdit() {
                         data-sb-validations=""
                     />
                     <label htmlFor="numberOfFloor">Number Of Floor</label>
+                    <div style={{ color: 'red' }}><ErrorMessage component="span" name='numberOfFloor' /></div>
+
                 </div> : ''}
+                <div style={{ color: 'red' }}><ErrorMessage component="span" name='poolArea' /></div>
                 <div className="d-grid">
                     <button className="btn btn-primary btn-lg" id="" type="submit">
                         Edit

@@ -1,8 +1,10 @@
-import { Form, Formik, Field } from "formik";
+import { Form, Formik, Field, ErrorMessage } from "formik";
 import * as Service from '../service/ServiceCustomer'
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
+import * as Yup from 'yup';
+import { sub } from "date-fns/fp"
 export function CustomerEdit() {
     const navigate = useNavigate();
     const pram = useParams();
@@ -37,6 +39,17 @@ export function CustomerEdit() {
                     "address": selectedCustomer.address,
                     "kindOfCustomer": selectedCustomer.kindOfCustomer
                 }}
+
+
+                validationSchema={Yup.object({
+                    name: Yup.string().required("Not Empty"),
+                    birthOfDay: Yup.date().required().max(sub({ years: 18 }, new Date()), "Customer must be over 18 years old"),
+                    identity: Yup.string().required().matches("^[0-9]{10}$", "Not identity"),
+                    numberPhone: Yup.string().required().matches("^(84|0[3|5|7|8|9])+([0-9]{8})$", "Not phoneNumber"),
+                    email: Yup.string().required().matches("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", "Not email"),
+                    address: Yup.string().required()
+                })}
+
                 onSubmit={async (values) => {
                     await editCustomter(values);
                     navigate("/customer/");
@@ -54,6 +67,7 @@ export function CustomerEdit() {
                             data-sb-validations=""
                         />
                         <label htmlFor="name">Name</label>
+                        <div style={{ color: 'red' }}><ErrorMessage component="span" name='name' /></div>
                     </div>
                     <div className="form-floating mb-3">
                         <Field
@@ -65,6 +79,7 @@ export function CustomerEdit() {
                             data-sb-validations=""
                         />
                         <label htmlFor="birthOfDay">Birth Of Day</label>
+                        <div style={{ color: 'red' }}><ErrorMessage component="span" name='birthOfDay' /></div>
                     </div>
                     <div className="mb-3 text-light">
                         <label className="form-label d-block">Gender</label>
@@ -103,9 +118,7 @@ export function CustomerEdit() {
                             data-sb-validations="required"
                         />
                         <label htmlFor="identity">Identity</label>
-                        <div className="invalid-feedback" data-sb-feedback="identity:required">
-                            Identity is required.
-                        </div>
+                        <div style={{ color: 'red' }}><ErrorMessage component="span" name='identity' /></div>
                     </div>
                     <div className="form-floating mb-3">
                         <Field
@@ -117,6 +130,7 @@ export function CustomerEdit() {
                             name="numberPhone"
                         />
                         <label htmlFor="phoneNumber">Phone Number</label>
+                        <div style={{ color: 'red' }}><ErrorMessage component="span" name='numberPhone' /></div>
                     </div>
                     <div className="form-floating mb-3">
                         <Field
@@ -128,15 +142,7 @@ export function CustomerEdit() {
                             data-sb-validations="required,email"
                         />
                         <label htmlFor="emailAddress">Email Address</label>
-                        <div
-                            className="invalid-feedback"
-                            data-sb-feedback="emailAddress:required"
-                        >
-                            Email Address is required.
-                        </div>
-                        <div className="invalid-feedback" data-sb-feedback="emailAddress:email">
-                            Email Address Email is not valid.
-                        </div>
+                        <div style={{ color: 'red' }}><ErrorMessage component="span" name='email' /></div>
                     </div>
                     <div className="form-floating mb-3">
                         <Field as="select"
@@ -163,18 +169,7 @@ export function CustomerEdit() {
                             data-sb-validations=""
                         />
                         <label htmlFor="address">Address</label>
-                    </div>
-                    <div className="d-none" id="submitSuccessMessage">
-                        <div className="text-center mb-3">
-                            <div className="fw-bolder">Form submission successful!</div>
-                            <p>To activate this form, sign up at</p>
-                            <a href="https://startbootstrap.com/solution/contact-forms">
-                                https://startbootstrap.com/solution/contact-forms
-                            </a>
-                        </div>
-                    </div>
-                    <div className="d-none" id="submitErrorMessage">
-                        <div className="text-center text-danger mb-3">Error sending message!</div>
+                        <div style={{ color: 'red' }}><ErrorMessage component="span" name='address' /></div>
                     </div>
                     <div className="d-grid">
                         <button

@@ -1,6 +1,7 @@
 import * as serviceFacility from '../service/ServiceFacility';
 import { useNavigate } from 'react-router-dom';
-import { Form, Formik, Field } from 'formik';
+import { Form, Formik, Field, validateYupSchema, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 export function FacilityCreateHouse() {
     const navigate = useNavigate();
     const create = async (facility) => {
@@ -20,6 +21,18 @@ export function FacilityCreateHouse() {
                 "kindOfRent": 'day',
                 "type": "house"
             }}
+
+            validationSchema={Yup.object({
+                name: Yup.string().required("Not Empty"),
+                useArea: Yup.number().required().moreThan(0, "Greater than zero"),
+                price: Yup.number("Not number").required("Not Empty").moreThan(0, "Greater than zero"),
+                maxOfPersons: Yup.number("Not number").required("Not Empty").moreThan(0, "Greater than zero"),
+                standard: Yup.string().required("Not Empty"),
+                more: Yup.string().required("Not Empty"),
+                numberOfFloor: Yup.number("Not number").required("Not Empty").moreThan(0, "Greater than zero")
+            })}
+
+
             onSubmit={(facility) => {
                 create(facility);
             }}
@@ -35,7 +48,9 @@ export function FacilityCreateHouse() {
                         data-sb-validations=""
                     />
                     <label htmlFor="name">Name</label>
+                    <div style={{ color: 'red' }}><ErrorMessage component="span" name='name' /></div>
                 </div>
+
                 <div className="form-floating mb-3">
                     <Field
                         className="form-control"
@@ -45,6 +60,7 @@ export function FacilityCreateHouse() {
                         data-sb-validations=""
                     />
                     <label htmlFor="useArea">Use Area (M2)</label>
+                    <div style={{ color: 'red' }}><ErrorMessage component="span" name='useArea' /></div>
                 </div>
                 <div className="form-floating mb-3">
                     <Field
@@ -56,6 +72,7 @@ export function FacilityCreateHouse() {
                         data-sb-validations=""
                     />
                     <label htmlFor="fee">Price</label>
+                    <div style={{ color: 'red' }}><ErrorMessage component="span" name='price' /></div>
                 </div>
                 <div className="form-floating mb-3">
                     <Field
@@ -67,6 +84,7 @@ export function FacilityCreateHouse() {
                         data-sb-validations=""
                     />
                     <label htmlFor="maxOfPersons">Max Of Persons</label>
+                    <div style={{ color: 'red' }}><ErrorMessage component="span" name='maxOfPersons' /></div>
                 </div>
                 <div className="form-floating mb-3">
                     <Field as='select' className="form-select" id="" name='kindOfRent' aria-label="Kind Of Rent">
@@ -87,6 +105,7 @@ export function FacilityCreateHouse() {
                         data-sb-validations=""
                     />
                     <label htmlFor="standard">Standard</label>
+                    <div style={{ color: 'red' }}><ErrorMessage component="span" name='standard' /></div>
                 </div>
                 <div className="form-floating mb-3">
                     <Field as='textarea'
@@ -98,6 +117,7 @@ export function FacilityCreateHouse() {
                         data-sb-validations=""
                     />
                     <label htmlFor="more">Description</label>
+                    <div style={{ color: 'red' }}><ErrorMessage component="span" name='more' /></div>
                 </div>
                 <div className="form-floating mb-3">
                     <Field
@@ -109,6 +129,7 @@ export function FacilityCreateHouse() {
                         data-sb-validations=""
                     />
                     <label htmlFor="numberOfFloor">Number Of Floor</label>
+                    <div style={{ color: 'red' }}><ErrorMessage component="span" name='numberOfFloor' /></div>
                 </div>
                 <div className="d-grid">
                     <button className="btn btn-primary btn-lg" id="" type="submit">

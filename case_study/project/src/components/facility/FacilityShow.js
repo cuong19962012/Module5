@@ -1,15 +1,40 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as serviceFacility from '../service/ServiceFacility';
+import ModalDelete from '../modal/ModalDelete';
 export function FacilityShow() {
-
     const [facilitys, setFacility] = useState([]);
+    const [modal, SetModal] = useState({
+        show: false,
+        info: {}
+    });
     useEffect(() => {
         getAll();
     }, []);
     const getAll = async () => {
         const result = await serviceFacility.getAll();
         setFacility(result);
+    }
+    const deleteConfirm = async (id) => {
+        await serviceFacility.deleteFacility(id);
+        hideModalDelete();
+        getAll()
+    }
+
+    const showModalDelete = (facility) => {
+        SetModal({
+            show: true,
+            info: facility
+        });
+
+    }
+    const hideModalDelete = () => {
+        SetModal(
+            {
+                show: false,
+                info: {}
+            }
+        );
     }
     return (
         <>
@@ -42,10 +67,12 @@ export function FacilityShow() {
                                     Edit
                                 </button>
                             </Link>
+                            <button type="button" onClick={() => showModalDelete(e)} className="btn btn-danger rounded-pill">Delete</button>
                         </div>
                     </div>
                 ))}
             </div>
+            <ModalDelete showModal={modal} hideModal={hideModalDelete} confirm={deleteConfirm} />
         </>
 
     );

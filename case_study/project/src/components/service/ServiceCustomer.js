@@ -30,3 +30,11 @@ export async function getCustomerById(id) {
 
     }
 }
+export async function deleteCustomer(id) {
+    try {
+        await axios.delete('http://localhost:8000/customer/' + id);
+    } catch (e) {
+        console.log(e);
+
+    }
+}

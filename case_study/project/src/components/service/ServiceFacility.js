@@ -30,3 +30,11 @@ export async function getFacilityById(id) {
 
     }
 }
+export async function deleteFacility(id) {
+    try {
+        await axios.delete('http://localhost:8000/facility/' + id);
+    } catch (e) {
+        console.log(e);
+
+    }
+}

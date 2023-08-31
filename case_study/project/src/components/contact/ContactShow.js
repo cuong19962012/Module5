@@ -46,7 +46,6 @@ export function ContactShow() {
                                                                     <th>{contact.endDate}</th>
                                                                     <th>{contact.deposit}</th>
                                                                     <th>{contact.totalPrice}</th>
-
                                                                 </tr>
                                                             ))
                                                         }
