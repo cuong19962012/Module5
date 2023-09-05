@@ -4,13 +4,19 @@ import { Link } from "react-router-dom";
 
 import Moment from 'moment';
 import MyPagination from "./MyPagination";
+import MyModal from "./MyModal";
 export function ProductShow() {
     const [products, setProducts] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
+    const [searchName, setSearchName] = useState("");
+    const [modal, SetModal] = useState({
+        show: false,
+        info: {}
+    });
     useEffect(() => {
-        getAll(pageNumber, document.getElementById('form4Example1').value);
-    }, [pageNumber]);
+        getAll(pageNumber, searchName);
+    }, [pageNumber, searchName, totalPages]);
 
     const getAll = async (page, searchName) => {
         const result = await Service.getAll(page, searchName);
@@ -20,11 +26,36 @@ export function ProductShow() {
     }
     const search = async () => {
         const productName = await document.getElementById('form4Example1').value;
-        getAll(1, productName);
+        setSearchName(productName);
     }
+
+    const deleteConfirm = async (id) => {
+        await Service.remove(id);
+        hideModalDelete();
+        setPageNumber(0);
+    };
+
+    const showModalDelete = (product) => {
+        SetModal({
+            show: true,
+            info: product
+        });
+
+    };
+    const hideModalDelete = () => {
+        SetModal(
+            {
+                show: false,
+                info: {}
+            }
+        );
+    };
+
 
     if (products.length === 0)
         return (<div> Not result</div>)
+
+
 
     // "productCode": "p-01",
     // "name": "Ao co co",
@@ -58,12 +89,14 @@ export function ProductShow() {
                             <td>{product.type.name}</td>
                             <td>
                                 <Link to={`/edit/${product.id}`}><button type="button" className="btn btn-primary">Edit</button></Link>
+                                <button type="button" onClick={() => showModalDelete(product)} className="btn btn-danger">Delete</button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
             <MyPagination pageNumber={pageNumber} setPageNumber={setPageNumber} totalPages={totalPages} />
+            <MyModal showModal={modal} hideModal={hideModalDelete} confirm={deleteConfirm} />
         </>
     );
 }
